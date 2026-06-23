@@ -47,7 +47,21 @@
     font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.01em;
+    flex: 1;
   }
+  #home-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    margin-right: 12px;
+    transition: all 0.15s;
+  }
+  #home-btn:hover { background: var(--accent-light); border-color: var(--accent); }
   #score-display {
     font-size: 0.85rem;
     color: var(--text-muted);
@@ -295,6 +309,7 @@
 </head>
 <body>
 <header>
+  <button id="home-btn" onclick="goHome()" title="Strona główna">🏠</button>
   <h1>Psychologia Różnic Indywidualnych</h1>
   <div id="score-display">Wynik: <span id="score-correct">0</span> / <span id="score-total">0</span></div>
 </header>
@@ -3248,6 +3263,270 @@ const BLOCKS = [
         lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>⚠️ Odpowiedź niepewna.</strong> Sawanci mają wyjątkową pamięć i percepcję w wąskim obszarze (muzyka, matematyka, rysunek). <strong>Ogólne rozwiązywanie problemów</strong> (poza obszarem specjalności) jest zazwyczaj słabe. Kreatywność jest kontrowersyjna – savanci często reprodukują precyzyjnie, ale niekoniecznie tworzą oryginalnie.`
       }
     ]
+  },
+  {
+    name: 'Blok 9: Inteligencja Ogólna, Zdolności Umysłowe i Inteligencja Emocjonalna',
+    shortName: 'Inteligencja',
+    questions: [
+      {
+        q: 'Kto stworzył koncepcję „Ars magna inveniendi" (młynek do wnioskowania) – jedno z najstarszych ujęć zdolności umysłowych w historii inteligencji?',
+        opts: ['Charles Spearman', 'Ramon Lull (Lullus, 1232–1316)', 'Alfred Binet', 'Francis Galton'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div><strong>Ramon Lull (Lullus)</strong> – średniowieczny filozof, autor „Ars magna inveniendi" (sztuki odkrywania), opisał zdolność uczenia się i wnioskowania za pomocą tzw. „młynka do wnioskowania". To najstarsza pozycja w tabeli historii inteligencji Nosala – wyprzedza Galtona o ponad 600 lat. Galton (1883) wprowadził eksperymenty i testy umysłowe; Binet (1908) – wiek umysłowy; Spearman (1904) – czynnik g.`
+      },
+      {
+        q: 'Józefa Joteyko (1866–1928), której pamięci poświęcony jest wykład Nosala o inteligencji, była:',
+        opts: ['polską badaczką, profesorem Collège de France, autorką „metody testów umysłowych" (1908, Lwów 1924)', 'twórczynią Skali Wechslera dla dzieci', 'asystentką Galtona, która rozwinęła statystykę korelacji', 'autorką teorii inteligencji emocjonalnej'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>Józefa Joteyko</strong> – polska badaczka, profesor w Collège de France, jedna z pierwszych kobiet-naukowczyń w psychologii. Stworzyła „metodę testów umysłowych" (1908), kontynuowaną we Lwowie do 1924 r. Nosal dedykuje jej wykład o inteligencji jako polskiej prekursorce w tym obszarze, równoległej do Cattella, Kraepelina i Porteusa.`
+      },
+      {
+        q: 'Iloraz inteligencji (IQ) jako wskaźnik pomiaru wprowadził:',
+        opts: ['Wechsler', 'Charles Spearman', 'Alfred Binet', 'William Stern (1912, 1916)'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>William Stern</strong> (1912, kluczowa publikacja 1916) wprowadził <em>iloraz inteligencji</em> (IQ) jako relację wieku umysłowego do wieku życia × 100. Binet i Simon (1908) wprowadzili wcześniej pojęcie <em>wieku umysłowego</em>, ale to Stern przekształcił je w iloraz. Wechsler (1939) rozwinął inny sposób obliczania IQ – jako pozycję w rozkładzie normalnym (odchylenie standardowe), nie jako prosty iloraz.`
+      },
+      {
+        q: '„Army Alpha" i „Army Beta" – testy do masowej selekcji rekrutów w USA (1917) – stworzył:',
+        opts: ['Louis Thurstone', 'Raymond Cattell', 'Robert Yerkes', 'David Wechsler'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>Robert Yerkes</strong> (1917) opracował testy Army Alpha (dla osób piszących i czytających po angielsku) i Army Beta (dla niepiśmiennych/obcojęzycznych, w formie niewerbalnej) – pierwsze testy grupowe masowo stosowane w wojsku USA podczas I wojny światowej. To ważny krok w historii psychometrii zdolności.`
+      },
+      {
+        q: 'Skalę WAIS, koncepcję profili inteligencji oraz pojęcie „deterioracji IQ" wprowadził:',
+        opts: ['Louis Thurstone', 'Raymond Cattell', 'J.P. Guilford', 'David Wechsler (1939, 1940)'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>David Wechsler</strong> (1939 – skala dla dorosłych, 1940 – rozkład IQ z odchyleniem standardowym) stworzył WAIS oraz koncepcję <em>profili inteligencji</em> (różne podskale u tej samej osoby) i <em>deterioracji IQ</em> (spadku niektórych zdolności z wiekiem). Polską adaptację WAIS-PL opracował Brzeziński i współpracownicy (1993).`
+      },
+      {
+        q: 'Zgodnie z definicją D. Wechslera (1939), inteligencja jest:',
+        opts: ['zdolnością wyspecjalizowaną, niezależną od kontekstu kulturowego', 'sumą wyuczonych umiejętności szkolnych', 'zagregowaną (ogólną) zdolnością jednostki do podejmowania działań celowych, racjonalnego myślenia i efektywnego radzenia sobie we własnym środowisku', 'wyłącznie zdolnością do rozwiązywania testów psychometrycznych'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Definicja Wechslera (1939) podkreśla dwie cechy inteligencji: jest <strong>globalna</strong> (charakteryzuje zachowanie jednostki jako całości) oraz <strong>zagregowana</strong> (składa się z elementów/zdolności, które choć nie są całkowicie niezależne, są jakościowo odróżnialne). To różni się od czysto testometrycznego ujęcia – kładzie nacisk na adaptację do środowiska, nie tylko na wynik testu.`
+      },
+      {
+        q: 'Zgodnie z łacińską etymologią przywołaną przez Nosala, „intelligentia" wywodzi się z połączenia „intellegere" (wybierać, rozumieć, wiedzieć) i „legere", co oznacza:',
+        opts: ['mierzyć, oceniać', 'tworzyć, wymyślać', 'nauczać, przekazywać', 'gromadzić, wnioskować'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Źródłosłów łaciński: <em>intellegere</em> – wybierać, rozumieć, wiedzieć; <em>legere</em> – gromadzić, wnioskować; <em>intelligentia</em> – rozum, zdolność rozumienia, znawstwo, pojmowanie, wyobrażanie. Stąd inteligencja oznacza zdolność trafnego wyboru opartego na wnikliwym osądzie sytuacji i znajomości rzeczy – czyli na zrozumieniu kilku zależności i stworzeniu nowego rozwiązania.`
+      },
+      {
+        q: 'Które z poniższych NIE jest elementem definicji inteligencji wg Nosala (ocenianie, rozumienie, rozumowanie, adaptacja, twórczość)?',
+        opts: ['wyspecjalizowanie w jednej wąskiej dziedzinie', 'skuteczna adaptacja', 'ocenianie sytuacji', 'twórczość'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Kluczowy punkt definicji: <strong>inteligencja jest zdolnością ogólną, NIEWYSPECJALIZOWANĄ</strong> – obejmuje ocenianie, rozumienie, rozumowanie (wnioskowanie), skuteczną adaptację i twórczość. Wyspecjalizowanie w jednej dziedzinie (np. szachy) to raczej talent/zdolność specjalna, nie inteligencja ogólna w tym sensie.`
+      },
+      {
+        q: 'Triarchiczna teoria inteligencji R. Sternberga (1985, za Nosalem 1990) obejmuje trzy składowe. Która z poniższych NIE jest jedną z nich?',
+        opts: ['Teoria komponent', 'Teoria kontekstu zachowań inteligentnych', 'Teoria stylów poznawczych', 'Teoria doświadczenia'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Triarchiczna teoria Sternberga (1985): <strong>teoria komponent</strong> (struktura i interakcja operacji poznawczych, baza neuronalna gf/gc), <strong>teoria doświadczenia</strong> (struktura wiedzy, wgląd, intuicja, twórczość, automatyzacja) i <strong>teoria kontekstu zachowań inteligentnych</strong> (cele, standardy kulturowe, wiedza <em>implicite</em>, trafność diagnozy IQ). Teoria stylów poznawczych to odrębny obszar (Blok 4), nie część modelu Sternberga.`
+      },
+      {
+        q: '„Teoria doświadczenia" w triarchicznym modelu Sternberga koncentruje się na:',
+        opts: ['podstawowych operacjach poznawczych i ich bazie neuronalnej', 'standardach kulturowych oceny zachowań inteligentnych', 'strukturze wiedzy, jej reorganizacji oraz mechanizmach wglądu, intuicji, twórczości i automatyzowania się czynności', 'wyłącznie pamięci roboczej'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">To właśnie „teoria doświadczenia" wyjaśnia, jak wiedza jest reorganizowana w miarę nabywania ekspertyzy oraz jak rodzą się wgląd i intuicja przy rozwiązywaniu nowych problemów, a rutynowe czynności stają się automatyczne. „Teoria komponent" odnosi się do operacji poznawczych, a „teoria kontekstu" – do standardów kulturowych.`
+      },
+      {
+        q: 'W modelu komponentów inteligencji Nosala, „Baza 1" odpowiada systemowi operacji (gf), natomiast „Baza 2" odpowiada:',
+        opts: ['cechom fal neuronalnych', 'szybkości reagowania', 'pamięci roboczej', 'strukturze wiedzy (gc)'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Dwie bazy zdolności umysłowych: <strong>Baza 1 (gf)</strong> – system operacji poznawczych (niezawodność przetwarzania), <strong>Baza 2 (gc)</strong> – struktura wiedzy. Obie bazy zasilają ocenianie i rozumienie sytuacji, prowadząc do przewidywania, skutecznego uczenia się, trafnych decyzji i strategii oraz wyobraźni/twórczości.`
+      },
+      {
+        q: 'Cechy sytuacji, która wymaga zaangażowania inteligencji (wg schematu Nosala), to niejasność, niepewność, złożoność i:',
+        opts: ['powtarzalność', 'jednoznaczność', 'stabilność', 'zmienność'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Inteligencja „włącza się" wtedy, gdy sytuacja jest <strong>niejasna, niepewna, złożona i zmienna</strong> – czyli nie można oprzeć się na gotowych nawykach czy procedurach (analogicznie do tezy 5 o typach umysłu z Bloku 4 – style/inteligencja ujawniają się w sytuacjach niejednoznacznych).`
+      },
+      {
+        q: 'Inteligencja konwergencyjna ("szybka") prowadzi do:',
+        opts: ['wielu trafnych wyników i tworzenia nowych rozwiązań', 'organizacji systemu wiedzy i pojęć wyłącznie', 'wyłącznie zdolności werbalnych', 'jednego trafnego wyniku i kontroli osiągania celów'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>Inteligencja konwergencyjna</strong> = „jeden trafny wynik" + kontrola osiągania celów – stąd nazywana „szybką". Jej przeciwieństwem jest <strong>inteligencja dywergencyjna</strong> („powolna") = „wiele trafnych wyników" + tworzenie nowych rozwiązań, czyli otwieranie struktur poznawczych.`
+      },
+      {
+        q: 'Inteligencja dywergencyjna ("powolna") jest powiązana z:',
+        opts: ['wieloma trafnymi wynikami, tworzeniem nowych rozwiązań i „otwieraniem struktur"', 'zamykaniem struktur wiedzy', 'wyłącznie inteligencją skrystalizowaną', 'jednym trafnym wynikiem'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Inteligencja dywergencyjna „otwiera struktury" – generuje wiele możliwych, trafnych rozwiązań. Konwergencja i dywergencja to wymiar niezależny od podziału gf/gc – mogą występować zarówno w obrębie inteligencji płynnej, jak i skrystalizowanej (zob. kolejne pytania).`
+      },
+      {
+        q: 'Które z poniższych NIE jest przejawem inteligencji płynnej (gf) typu konwergencyjnego (jeden trafny wynik)?',
+        opts: ['koncentracja uwagi', 'szybkie tempo rozumowania', 'wymyślanie fabuł', 'sprawność pamięci roboczej'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Koncentracja uwagi, sprawność pamięci roboczej, szybkie wykrywanie różnic, szybkie tempo rozumowania i szybkie operacje liczbowe – to <strong>gf konwergencyjna</strong> (jeden trafny wynik). „Wymyślanie fabuł" to przejaw <strong>gc dywergencyjnej</strong> – operowania wiedzą i pojęciami w sposób generujący wiele możliwych rozwiązań.`
+      },
+      {
+        q: 'Płynność słowna, tempo kojarzenia, zmiana kierunku i zmiana strategii to przejawy:',
+        opts: ['wyłącznie pamięci długotrwałej', 'inteligencji płynnej (gf) typu dywergencyjnego – wiele trafnych wyników', 'inteligencji skrystalizowanej (gc) typu konwergencyjnego', 'inteligencji emocjonalnej'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">To <strong>gf dywergencyjna</strong> – „niezawodny system operacji umysłowych" generujący wiele trafnych wyników: płynność słowna, tempo kojarzenia, zmiana kierunku myślenia, zakres pamięci roboczej, zmiana strategii.`
+      },
+      {
+        q: '„Wykrywanie analogii", „tworzenie metafor" i „swobodne kojarzenie" to przejawy:',
+        opts: ['pamięci roboczej wyłącznie', 'inteligencji skrystalizowanej (gc) typu dywergencyjnego', 'inteligencji płynnej (gf) typu konwergencyjnego', 'inteligencji emocjonalnej wg LeDoux'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">To <strong>gc dywergencyjna</strong> – organizacja wiedzy i pojęć generująca wiele trafnych wyników: wykrywanie analogii, tworzenie metafor, interpretowanie niejasności, swobodne kojarzenie, wymyślanie fabuł. Konwergencyjna gc to raczej: rozumienie/definiowanie pojęć, zasób wiadomości, wykrywanie luk i sprzeczności – jeden trafny wynik.`
+      },
+      {
+        q: 'Louis Thurstone (1938) wyodrębnił 7 podstawowych zdolności/czynników. Które z poniższych NIE jest jednym z nich?',
+        opts: ['Verbal comprehension (V)', 'Word fluency (W)', 'General intelligence (g)', 'Perceptual speed (P)'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">7 czynników Thurstone'a: V (rozumienie wypowiedzi słownych), W (płynność słowna), N (operacje arytmetyczne), S (operacje przestrzenne), R (rozumowanie), M (pamięć asocjacyjna), P (szybkość spostrzegania). Czynnik <em>g</em> to kategoria Spearmana – Thurstone w swoim modelu wieloczynnikowym (Primary Mental Abilities) kontestował istnienie jednego czynnika ogólnego, preferując kilka niezależnych zdolności pierwotnych.`
+      },
+      {
+        q: 'Zgodnie z badaniami Horna (1968, Psychological Review), które zadanie testowe ma WYSOKI ładunek czynnika gf, a PRAKTYCZNIE ZEROWY ładunek czynnika gc?',
+        opts: ['Zakres pamięci (gf=.50, gc=.001)', 'Dyplomacja osobista (gf=-.08, gc=.43)', 'Analogie werbalne (gf=.37, gc=.43)', 'Szybkie czytanie ze zrozumieniem (gf=.08, gc=.68)'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Tabela Horna pokazuje, że zadania „surowego" przetwarzania (zakres pamięci, rozumowanie z materiałem obrazowym) silnie ładują gf, a ledwo gc – nie wymagają nabytej wiedzy. Odwrotnie: szybkie czytanie ze zrozumieniem czy dyplomacja osobista to głównie gc (wiedza, doświadczenie społeczne), praktycznie niezależne od gf.`
+      },
+      {
+        q: 'Które zadanie testowe, według tabeli Horna (1968), najsilniej zależy od inteligencji skrystalizowanej (gc), a najmniej od płynnej (gf)?',
+        opts: ['Rozumowanie indukcyjne (gf=.41, gc=.06)', 'Zakres pamięci (gf=.50, gc=.001)', 'Szybkie czytanie ze zrozumieniem (gf=.08, gc=.68)', 'Rozumowanie z materiałem obrazowym (gf=.57, gc=.01)'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Szybkie czytanie ze zrozumieniem wymaga dużego zasobu nabytej wiedzy językowej (gc=.68), a niewiele „surowej" mocy przetwarzania (gf=.08). Pozostałe trzy zadania to klasyczne wskaźniki gf – wysoki ładunek gf, znikomy gc.`
+      },
+      {
+        q: 'Teoria CHC to synteza dorobku trzech badaczy. Którzy to badacze?',
+        opts: ['Cattell, Horn, Cronbach', 'Cattell, Horn, Carroll', 'Cattell, Hull, Carroll', 'Cattell, Hebb, Carroll'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>Cattell + Horn</strong> (1963, 1971) podzielili czynnik g na gf i gc; <strong>Carroll</strong> (1993) przeprowadził metaanalizę 477 badań i zsyntetyzował struktury czynnikowe w model trójstratumowy. Połączenie tych dwóch linii badań to <strong>teoria CHC</strong> – „wielka synteza 1904–2024", jak nazywa to Nosal.`
+      },
+      {
+        q: 'W zintegrowanym modelu CHC, czynnik g dzieli się na trzy główne kategorie szerokie (z ładunkami .1, .82 i .54). Która z poniższych NIE jest jedną z nich?',
+        opts: ['IE (inteligencja emocjonalna)', 'Gc (inteligencja skrystalizowana)', 'BM (szeroka pamięć / broad memory)', 'Gf (inteligencja płynna)'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Model CHC: g→Gf (ładunek 1)→Re, QR, FL; g→Gc (.82)→V, SA; g→BM (.54)→AM, Sp. Inteligencja emocjonalna NIE jest częścią modelu CHC – to odrębny konstrukt, rozwijany niezależnie przez Mayera i Saloveya, a nie przez tradycję czynnikową Cattella–Horna–Carrolla.`
+      },
+      {
+        q: 'W trójstratumowym modelu Carrolla, „Stratum III" oznacza:',
+        opts: ['poziom zdolności szerokich (Gf, Gc, Gv...)', 'poziom ogólny – czynnik g', 'poziom behawioralny', 'poziom zdolności wąskich/specyficznych (80+ zdolności)'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Model Carrolla ma trzy poziomy: <strong>Stratum I</strong> – ponad 80 wąskich (narrow) zdolności specyficznych; <strong>Stratum II</strong> – zdolności szerokie (Gf, Gc, Gy, Gv, Gu, Gr, Gs, Gt); <strong>Stratum III</strong> – poziom ogólny, czynnik g, na szczycie hierarchii.`
+      },
+      {
+        q: 'Model Cattella-Horna (Extended Gf-Gc Model) różni się od modelu Carrolla w hierarchicznym schemacie CHC tym, że:',
+        opts: ['opisuje wyłącznie inteligencję skrystalizowaną', 'jest dokładnie identyczny z modelem Carrolla', 'zawiera więcej poziomów hierarchii niż model Carrolla', 'nie zawiera jednoznacznych strzałek od g do zdolności szerokich, bo Cattell i Horn nie uznawali wprost takiej samej roli czynnika g jak Carroll'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">W zintegrowanym schemacie CHC zaznaczono wprost: „Missing g-to-broad ability arrows acknowledges that Carroll and Cattell-Horn disagreed on the validity of the general factor" – Cattell i Horn byli sceptyczni wobec mocnej wersji czynnika g, podczas gdy Carroll przyjmował go jako szczyt hierarchii (Stratum III).`
+      },
+      {
+        q: 'Mapa SSA (Smallest Space Analysis) dla testów inteligencji, oparta na teorii facetowej Guttmana, organizuje testy radialnie wg dwóch fasetów: typu materiału (werbalny/numeryczny/figuralny) oraz:',
+        opts: ['rodzaju operacji umysłowej – od wnioskowania reguł (centrum) do stosowania reguł: kognitywnego, klerykalnego i konkretnego (kolejne pierścienie)', 'płci badanego', 'wieku badanego', 'poziomu wykształcenia badanego'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Konfiguracja radeksowa Guttmana: centrum mapy zajmują testy <strong>wnioskowania reguł</strong> (rule-inferring), otoczone kolejnymi pierścieniami testów <strong>stosowania reguł</strong> – najpierw kognitywno-abstrakcyjnego, dalej klerykalnego, na zewnątrz konkretnego. Trzy sektory kątowe odpowiadają typowi materiału: werbalnemu, numerycznemu i figuralnemu.`
+      },
+      {
+        q: 'Model PASS (Das i wsp.) opisuje inteligencję jako system funkcjonalny mózgu złożony z trzech jednostek. Które to jednostki?',
+        opts: ['Pamięć krótkotrwała, robocza i trwała', 'Pobudzenie/uwaga (pień mózgu), przetwarzanie symultaniczne i sukcesywne (kora potyliczna/ciemieniowa/skroniowa), planowanie (kora czołowa) – wszystko zanurzone w bazie wiedzy', 'Inteligencja płynna, skrystalizowana i emocjonalna', 'Percepcja, kodowanie i wnioskowanie'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">PASS = <strong>P</strong>lanning, <strong>A</strong>ttention-arousal, <strong>S</strong>imultaneous, <strong>S</strong>uccessive. Pierwsza jednostka funkcjonalna (pień mózgu) odpowiada za pobudzenie i uwagę; druga (kora potyliczna, ciemieniowa, skroniowa) za przetwarzanie symultaniczne i sukcesywne; trzecia (kora czołowa) za planowanie. Wszystkie procesy są „zanurzone" w bazie wiedzy (knowledge base), pochodzącej z doświadczenia kulturowo-społecznego.`
+      },
+      {
+        q: 'Według modelu modularności mózgu Andersona (1992), inteligencja działa w dwóch torach: Tor 1 to system centralny (g, gf, gc – mechanizm podstawowy przetwarzania informacji), a Tor 2 to:',
+        opts: ['inteligencja emocjonalna', 'wyłącznie struktura wiedzy skrystalizowanej', 'moduły wyspecjalizowane (np. percepcja 3D, kodowanie fonologiczne, różnicowanie sekwencji i pauz, „teoria umysłu")', 'pamięć długotrwała'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Anderson (1992) proponuje dwutorowy model: <strong>Tor 1 (system centralny)</strong> – mechanizm podstawowy przetwarzania informacji (g), zasilany przez gf i gc; <strong>Tor 2 (moduły)</strong> – wyspecjalizowane, względnie autonomiczne systemy: percepcja 3D, kodowanie fonologiczne, różnicowanie sekwencji/pauz, „teoria umysłu". Moduły zasilają gf, ale działają częściowo niezależnie od systemu centralnego.`
+      },
+      {
+        q: 'W mechanizmie operacyjnym inteligencji płynnej (Nosal), centralne przetwarzanie informacji (pole uwagi/pamięć krótkotrwała ↔ pamięć robocza ↔ pamięć trwała) jest sterowane przede wszystkim przez:',
+        opts: ['emocje i nastrój', 'inteligencję skrystalizowaną wyłącznie', 'czynniki genetyczne wyłącznie', 'metapoznawanie i strategie'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Schemat mechanizmu gf: sygnały zadania/problemu i nabyte doświadczenie zasilają przetwarzanie (pamięć krótkotrwała/robocza/trwała), które jest koordynowane i kontrolowane „z góry" przez <strong>metapoznawanie i strategie</strong>, z uwzględnieniem cech procesów podstawowych i koordynacji procesów.`
+      },
+      {
+        q: 'Według Sternberga i Pretz (2005), pamięć robocza (WM) najsilniej koreluje z:',
+        opts: ['zdolnościami werbalnymi (WM→Verb=.27)', 'zdolnościami przestrzennymi (WM→Przestrz.=.30)', 'inteligencją emocjonalną', 'inteligencją płynną (gf) – ścieżka WM→gf=.64, dalej do testu Ravena (.76) i WAIS (.79)'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Pamięć robocza (WM) jest najsilniej związana z gf (.64), które z kolei silnie koreluje z wynikami Testu Matryc Ravena (.76) i skali WAIS (.79). Związki WM z komponentami werbalnymi (.27) i przestrzennymi (.30) są wyraźnie słabsze – WM jest bliżej „surowej" mocy przetwarzania (gf) niż wyspecjalizowanych zdolności.`
+      },
+      {
+        q: 'Według badań Mattarazzo (1992), najsilniejszym predyktorem ogólnego IQ na podstawie cech fali neuronalnej jest:',
+        opts: ['połączenie zmienności (liczby oscylacji) i geometrycznej złożoności kształtu fali (łącznie korelacja .83, 69% wyjaśnionej wariancji)', 'wyłącznie złożoność fali (52% wariancji)', 'czas reakcji prostej', 'wyłącznie liczba oscylacji (52% wariancji)'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Mattarazzo (1992) wykazał, że oscylacje fali (zmienność) korelują z ogólnym IQ na poziomie -.72, a złożoność kształtu fali na poziomie .72 (każda z cech samodzielnie wyjaśnia 52% wariancji), ale ich <strong>połączenie</strong> daje korelację .83 i wyjaśnia 69% wariancji IQ – znacznie więcej niż jakikolwiek pojedynczy wskaźnik.`
+      },
+      {
+        q: 'Zgodnie z ogólnym wnioskiem z badań nad determinantami inteligencji (Ridley 2001, Plomin i wsp. 2001), udział czynników genetycznych w zmienności IQ wynosi około:',
+        opts: ['10%', '80%', '50%', '20%'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Trzy komponenty determinujące IQ: <strong>50% determinacja genetyczna</strong> (gf vs gc, dwa tory DNA – jądrowe i mitochondrialne; sekwencja IGF2R na chromosomie 6 – Plomin 1998/2006), <strong>30% warunki rozwoju w macicy</strong>, <strong>20% środowisko rozwoju poznawczego</strong> (okres niemowlęcy, dzieciństwo, grupy rówieśnicze, media, szkoła).`
+      },
+      {
+        q: 'Które z poniższych NIE jest składnikiem 20%-owego komponentu „środowisko rozwoju poznawczego" w modelu determinant inteligencji?',
+        opts: ['wpływ grup rówieśniczych', 'media i szkoła', 'warunki rozwoju w macicy', 'okres niemowlęcy'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Warunki rozwoju w macicy to odrębny, <strong>30%-owy komponent prenatalny</strong> (biologiczny, nie społeczny), oddzielony od 20%-owego komponentu środowiska poznawczego po urodzeniu (niemowlęctwo, dzieciństwo, rówieśnicy, media, szkoła).`
+      },
+      {
+        q: 'Zgodnie z badaniami Gottfredsona (2008, „Clocking the Mind"), zależność między wiekiem a czasem reakcji (szybkością operacji poznawczych) ma kształt:',
+        opts: ['odwróconej litery U z maksimum w wieku 40 lat', 'stałej, niezależnej od wieku', 'linii prostej, rosnącej od urodzenia', 'litery U – najkrótszy czas reakcji ok. 20–30 roku życia, potem systematyczny wzrost'],
+        correct: 3,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Wykres Gottfredsona pokazuje klasyczną krzywą w kształcie litery U: czas reakcji jest najkrótszy (najlepsza wydolność) w okolicach 20–30 roku życia, dłuższy u młodszych (dojrzewający system nerwowy) i u starszych (spowolnienie związane z wiekiem).`
+      },
+      {
+        q: 'Zgodnie z badaniami Horna i Cattella (1966, J. of Gerontology), inteligencja płynna (gf) w toku życia:',
+        opts: ['spada wyłącznie po 80. roku życia', 'osiąga maksimum w okolicach 18–28 roku życia, a następnie systematycznie spada', 'rośnie nieprzerwanie do końca życia', 'jest stała, niezależnie od wieku'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Wskaźniki gf (pamięć skojarzeniowa, poziom ogólny, relacje przestrzenne, szybkość umysłowa, indukcja) rosną do okolic 18–28 roku życia, po czym systematycznie spadają wraz z wiekiem – w przeciwieństwie do gc, która rośnie znacznie dłużej (zob. kolejne pytanie).`
+      },
+      {
+        q: 'W przeciwieństwie do inteligencji płynnej, inteligencja skrystalizowana (gc) w toku życia (Horn, Cattell 1966):',
+        opts: ['rośnie aż do wieku 40–61 lat (np. rozumienie werbalne, wiedza mechaniczna)', 'spada od 18. roku życia', 'osiąga maksimum w dzieciństwie', 'jest niezależna od doświadczenia'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Wskaźniki gc (płynność ideacyjna, pamięć asocjacyjna, bezpośrednia ewaluacja, wiedza mechaniczna, rozumienie werbalne) rosną systematycznie i osiągają najwyższy poziom w przedziale 40–61 lat – bo gc bazuje na zgromadzonej wiedzy i doświadczeniu, które przyrastają z wiekiem, w przeciwieństwie do „surowej" mocy przetwarzania (gf).`
+      },
+      {
+        q: 'Zgodnie z komentarzem Jamesa Flynna (wywiad dla „Wprost", 2007), tzw. efekt Flynna (wzrost IQ o ok. 3 punkty na dekadę) w krajach rozwiniętych:',
+        opts: ['przyspieszył po 2002 roku', 'nigdy nie został potwierdzony empirycznie', 'zatrzymał się/ustabilizował, co potwierdziły badania w krajach skandynawskich – istnieje granica poznawczych wymagań', 'nadal trwa w niezmienionym tempie'],
+        correct: 2,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Od początku XX wieku średnie IQ w krajach rozwiniętych zwiększało się o ok. 3 punkty na dekadę. Badania z 2002 r. (potwierdzone w krajach skandynawskich) wykazały, że ten wzrost ustał – poziom inteligencji się <strong>stabilizuje</strong>. Flynn wiąże to z istnieniem granicy między możliwościami poznawczymi osoby a wymaganiami środowiska (rodzina, edukacja, kariera).`
+      },
+      {
+        q: 'W książce „O inteligencji inaczej" (2012) Flynn porównuje inteligencję do atomu. Co, według niego, „spaja" jej elementy, a co je „rozbija"?',
+        opts: ['Spaja je czynnik g (inteligencja ogólna), rozbija – systematyczny wzrost IQ (efekt Flynna)', 'Spaja je pamięć robocza, rozbija – pamięć trwała', 'Spaja je gc, rozbija – gf', 'Spaja je środowisko, rozbija – genetyka'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Flynn: „Inteligencja przypomina ATOM. […] Tym, co łączy ze sobą elementy inteligencji, jest inteligencja ogólna albo czynnik g […]. Tym co rozbija atom, jest istotny, systematyczny wzrost IQ." Czynnik g jest dla niego skwantyfikowanym wynikiem analizy czynnikowej – miarą spójności struktury zdolności, którą długoterminowy wzrost IQ (efekt Flynna) zaburza.`
+      },
+      {
+        q: 'Zgodnie z danymi Gottfredsona (2006), korelacja IQ ze złożonością wykonywanej pracy wynosi od .2 do .8. Które grupy zawodowe wymagają najwyższego przedziału IQ (108–128)?',
+        opts: ['Kasjerzy i przewodnicy', 'Prawnicy i inżynierowie', 'Pakowacze i portierzy', 'Sekretarki i laboranci'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Hierarchia złożoności pracy a przedziały IQ (Gottfredson): prawnicy/inżynierowie 108–128; nauczyciele/programiści 100–120; sekretarki/laboranci 96–116; kasjerzy/przewodnicy 91–110; ochrona 85–105; pakowacze/portierzy 80–100. Korelacja między poziomem IQ a złożonością zawodu rośnie od .2 (najprostsze prace) do .8 (najbardziej złożone).`
+      },
+      {
+        q: 'Trzy czynniki inteligencji emocjonalnej (IE), odkryte przez Mayera i Saloveya (1993), obejmują zwracanie uwagi na własne stany emocjonalne, trafne i jasne rozumienie emocji oraz:',
+        opts: ['wysoki poziom inteligencji płynnej', 'świadome regulowanie i wykorzystywanie nastroju emocjonalnego', 'całkowity brak empatii', 'zdolność do manipulacji innymi ludźmi'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Mayer i Salovey (1993) zdefiniowali IE poprzez trzy procesy: (1) zwracanie uwagi na własne stany emocjonalne, (2) trafne i jasne rozumienie emocji, (3) świadome regulowanie i wykorzystywanie nastroju emocjonalnego. To podejście wyrosło z badań nad zmianami nastroju emocjonalnego, niezależnie od tradycji czynnikowej IQ (Spearman–Carroll).`
+      },
+      {
+        q: 'Joseph LeDoux (1996, 2000) odkrył dwie drogi regulacji emocjonalnej w mózgu – „górną" i „dolną". Jakie struktury mózgowe są z nimi związane?',
+        opts: ['Jądra podstawy i wzgórze', 'Ciało migdałowate (droga dolna, szybka, automatyczna) i kora mózgowa (droga górna, wolniejsza, refleksyjna)', 'Hipokamp i móżdżek', 'Pień mózgu i płat skroniowy'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>Droga dolna</strong> (ciało migdałowate) reaguje szybko i automatycznie na zagrożenie, z pominięciem świadomej refleksji. <strong>Droga górna</strong> (kora mózgowa) jest wolniejsza, ale umożliwia świadomą, refleksyjną regulację emocji. LeDoux opisał to w książce „Emocjonalny mózg" (2000) – to neuronalna podstawa inteligencji emocjonalnej.`
+      },
+      {
+        q: 'Pojęcie aleksytymii, wprowadzone przez Sifneosa (1972), oznacza:',
+        opts: ['zdolność do trafnego odczytywania emocji innych ludzi', 'trudność w rozpoznawaniu i nazywaniu własnych emocji – przeciwieństwo „symboleksji"', 'nadmierną wrażliwość emocjonalną', 'rodzaj zaburzenia pamięci roboczej'],
+        correct: 1,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div"><strong>Aleksytymia</strong> (Sifneos, 1972) – trudność w identyfikowaniu, nazywaniu i opisywaniu własnych emocji słowami; niski poziom jednego z kluczowych czynników IE. Przeciwieństwem jest <strong>symboleksja</strong> – łatwość symbolicznego, werbalnego wyrażania przeżyć emocjonalnych.`
+      },
+      {
+        q: 'Teoria troistego mózgu (the triune brain theory) Paula MacLeana (1970) wyróżnia trzy poziomy ewolucyjne odpowiadające gadom, pierwotnym i rozwiniętym ssakom. Czemu odpowiadają one funkcjonalnie?',
+        opts: ['Popędom, emocjom/uczuciom i racjonalności', 'Pamięci, uwadze i planowaniu', 'Percepcji, kodowaniu i wnioskowaniu', 'Inteligencji płynnej, skrystalizowanej i emocjonalnej'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">MacLean (1970, „The triune brain in evolution") opisał mózg jako trójwarstwową strukturę ewolucyjną: mózg „gadzi" – popędy; mózg „pierwotnych ssaków" (układ limbiczny) – emocje; mózg „rozwiniętych ssaków" (kora nowa) – uczucia i racjonalność. To biologiczny fundament rozróżnienia reakcji automatycznych (droga dolna LeDoux) od refleksyjnych (droga górna).`
+      },
+      {
+        q: 'Aforyzm „Nie ma nic gorszego niż człowiek wykształcony ponad własną inteligencję" (Jerzy Dobrowolski, satyryk kabaretu OWCA), przywołany przez Nosala, ilustruje problem:',
+        opts: ['granicy IQ – rozbieżności między poziomem wykształcenia a rzeczywistymi możliwościami poznawczymi', 'efektu Flynna', 'teorii CHC', 'inteligencji emocjonalnej'],
+        correct: 0,
+        lesson: `<div class="lesson-title">📌 Mini-lekcja</div">Nosal przywołuje ten aforyzm jako żartobliwą, ale trafną ilustrację problemu „granicy IQ" – sytuacji, w której formalne wykształcenie przewyższa rzeczywisty poziom zdolności poznawczych jednostki, co prowadzi do trudności w efektywnym radzeniu sobie z wymaganiami intelektualnymi własnej roli społecznej czy zawodowej.`
+      }
+    ]
   }
 ];
 
@@ -3300,6 +3579,10 @@ function buildTabs() {
 function updateFlaggedTab() {
   const btn = document.getElementById('tab-flagged');
   if (btn) btn.textContent = `🚩 Oflagowane (${flagged.size})`;
+}
+
+function goHome() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function switchBlock(idx) {
